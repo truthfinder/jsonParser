@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	<!--https://docs.microsoft.com/ru-ru/visualstudio/debugger/create-custom-views-of-native-objects?view=vs-2019-->
+	<Type Name="Json::Value">
+		<DisplayString Condition="type == Json::Value::Type::NUL">{name} : NULL</DisplayString>
+		<DisplayString Condition="type == Json::Value::Type::BOOLEAN">{name} : {std::get&lt;0&gt;(value)}</DisplayString>
+		<DisplayString Condition="type == Json::Value::Type::NUMBER">{name} : {std::get&lt;1&gt;(value)}</DisplayString>
+		<DisplayString Condition="type == Json::Value::Type::STRING">{name} : {std::get&lt;2&gt;(value)}</DisplayString>
+		<DisplayString Condition="type == Json::Value::Type::OBJECT">{name} : {std::get&lt;3&gt;(value)}</DisplayString>
+		<DisplayString Condition="type == Json::Value::Type::ARRAY">{name} : {std::get&lt;4&gt;(value)}</DisplayString>
+	</Type>
+</AutoVisualizer>

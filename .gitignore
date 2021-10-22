@@ -1,0 +1,10 @@
+.vs
+*.vcxproj.user
+
+docs
+hist
+Release
+Debug
+x64
+
+out.json

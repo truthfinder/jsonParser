@@ -1,0 +1,30 @@
+{
+    "game": {
+    },
+    "globalQuests": [
+        {
+            "_id": "hash1"
+        },
+        {
+            "_id": "hash2"
+        }
+    ],
+    "islands": [
+        {
+            "territories": [
+                {
+                    "buildings": [
+                        {
+                            "_id":"value1",
+                            "id":"coolA"
+                        },
+                        {
+                            "_id":"value2",
+                            "id":"coolB"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
