@@ -90,7 +90,7 @@ int main() {
         auto f0 = tmx::ms();
         //*
         std::string text;
-        int fi = _open("test/sample1.json", _O_BINARY | _O_RDONLY);
+        int fi = _open("test/sample0.json", _O_BINARY | _O_RDONLY);
         if (!fi) {
             std::cout << "can't open file\n";
             return -1;
@@ -117,9 +117,10 @@ int main() {
         fclose(fo);
 
         std::cout << "parse ms: " << f0 << "; clone ms: " << f1 << "; file serialization ms: " << f2 << std::endl;
+        // parse file=67, mmap=73, serialization=93ms, clone=44
 
         auto f3 = tmx::ms();
-        int fd = _open("test/sample1.json", _O_BINARY | _O_RDONLY);
+        int fd = _open("test/sample0.json", _O_BINARY | _O_RDONLY);
         size_t length = _filelength(fd);
         char const* ptr = static_cast<char const*>(mmap(0, length, PROT_READ, MAP_PRIVATE, fd, 0));
         _close(fd);
@@ -129,6 +130,7 @@ int main() {
         munmap(static_cast<void*>(const_cast<char*>(ptr)), length);
 
         std::cout << "parse mmap ms: " << f3 << "; doc mem: " << mdoc.memory() << std::endl;
+        // parse file=67ms, mmap=73ms, clone=45ms, mem=48.79MB
 
         auto res = doc.find("Image/Thumbnail/Url");
         auto res_obj = doc.get_array<Provider>("game/EndingTimeProvider/dict");
@@ -159,7 +161,9 @@ int main() {
                 cname(cname&&) = default;
                 void print() override { std::cout << "i:" << i << "; f:" << f << "; s:" << s << std::endl; }
             private:
-                int i; double f; std::string s;
+                int i{};
+                double f{};
+                std::string s;
             };
 
             class factory_t {

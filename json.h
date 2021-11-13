@@ -38,6 +38,8 @@
 
 /* todo
     - no type_t so -4 bytes
+        - but type will be variant::index => must initialize value on json::load => no lazy values load
+            - maybe for lazy: if index==null_t && !raw_sv.empty() => parse_raw_to_variant
     - explicit int
     - same sizeof(var) == 24
  
